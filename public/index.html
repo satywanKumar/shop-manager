@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Shop Manager - Premium</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#667eea">
-    <link rel="apple-touch-icon" href="/icons/icon-192.png">
     <style>
         * {
             margin: 0;
@@ -181,13 +177,8 @@
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .modal-content {
@@ -204,15 +195,8 @@
         }
 
         @keyframes slideUp {
-            from {
-                transform: translateY(100px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .modal-header {
@@ -513,13 +497,8 @@
         }
 
         @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         /* Empty State */
@@ -559,15 +538,8 @@
         }
 
         @keyframes slideInRight {
-            from {
-                transform: translateX(400px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
+            from { transform: translateX(400px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
         }
 
         .toast.success {
@@ -698,7 +670,6 @@
         }
     </style>
 </head>
-
 <body>
     <!-- Navbar -->
     <nav class="navbar">
@@ -1187,7 +1158,7 @@
         }
 
         // Close modals on outside click
-        window.onclick = function (event) {
+        window.onclick = function(event) {
             const modal = event.target;
             if (modal.classList && modal.classList.contains('modal')) {
                 modal.classList.remove('show');
@@ -1197,36 +1168,5 @@
         // Auto-refresh every 30 seconds
         setInterval(loadProducts, 30000);
     </script>
-    <script>
-    // PWA Install Prompt
-    let deferredPrompt;
-
-    window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
-
-        // Optional: show custom install button
-        console.log("App can be installed");
-    });
-
-    async function installApp() {
-        if (deferredPrompt) {
-            deferredPrompt.prompt();
-            const { outcome } = await deferredPrompt.userChoice;
-            console.log(`User response: ${outcome}`);
-            deferredPrompt = null;
-        }
-    }
-
-    // Service Worker Register
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/service-worker.js')
-                .then(() => console.log('Service Worker Registered'))
-                .catch(err => console.log('SW failed:', err));
-        });
-    }
-</script>
 </body>
-
 </html>
